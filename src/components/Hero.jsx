@@ -1,17 +1,44 @@
-import bgSmall from './../assets/bg-alt-sm.jpg'
-import bgMedium from './../assets/bg-alt-md.jpg'
+import bg1 from './../assets/simon-berger.jpg'
+import bg1lg from './../assets/simon-berger-lg.jpg'
+import bg2 from './../assets/pok-rie.jpg'
+import bg2lg from './../assets/pok-rie-lg.jpg'
+import bg3 from './../assets/roberto-shumski.jpg'
+import bg3lg from './../assets/roberto-shumski-lg.jpg'
 
-
-const Hero = () => {
+const Hero = ({ refToContact }) => {
   
+
+  const images = [
+    {
+      user: 'Simon Berger', smallSource: bg1, largeSource: bg1lg
+    },
+    {
+      user: 'Pok Rie', smallSource: bg2, largeSource: bg2lg
+    },
+    {
+      user: 'Roberto Shumski', smallSource: bg3, largeSource: bg3lg
+    }
+  ]
+  const randomImage = images[ Math.floor(Math.random() * ((images.length)))]
+  
+  const scrollToContact = () => {
+    refToContact.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className="hero">
-      <img className="hero-bg" src={bgMedium} alt={bgSmall}></img>
-      <h1 className="hero-title">Elevate Your Digital World with a Front-End Programmer</h1>
-      <p>Welcome to my digital playground, where innovation meets code.</p>
-      <div>
-        <button className="button cta-btn">Contact me!</button>
-        <button className="button secondary-cta-btn">Explore My Work</button>
+      <img className="hero-bg" loading="lazy" src={ randomImage.smallSource } ></img>
+      <span style={{position: "absolute", top: "5px", left:"3px", color: "white"}}>Image from Pexels by {randomImage.user}</span>
+      <h1 className="hero-title">
+        Elevate Your Digital World with a Front-End Programmer
+      </h1>
+      <p style={{color:"white"}}>
+        Welcome to my digital playground, where innovation meets code.
+      </p>
+
+      <div className="hero-btn-container">
+        <button className="button cta" onClick={scrollToContact}> Contact me!</button>
+        <button className="button secondary-cta">Explore My Work</button>
       </div>
       
     </div>

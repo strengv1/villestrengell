@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 
-const Contact = () => {
+const Contact = (props, ref) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
   return(
     <div className="contact">
-      <h2>Let&apos;s Connect!</h2>
+      <h2 ref={ref}>Let&apos;s Connect!</h2>
       <div>Ready to bring your project to life? Reach out and let&apos;s start coding together.</div>
-      <p>You can reach me at <span className="email-inline">villes-97@hotmail.com</span>, or use the contact form below to do so directly</p>
+      <p>You can reach me at <b>villes-97@hotmail.com</b>, or use the contact form below to do so directly</p>
       <form className="contact-form">
         <div className="input-container">
           <input
@@ -42,4 +42,4 @@ const Contact = () => {
 }
   
 
-export default Contact
+export default forwardRef(Contact)
