@@ -4,7 +4,7 @@ import About from './components/About'
 import Footer from './components/Footer'
 import { useRef } from 'react'
 import './css/App.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const refToContact = useRef(null)
@@ -15,6 +15,7 @@ function App() {
       <About />
       <Contact ref={refToContact}/>
       <Footer />
+
     </div>
   )
 }
