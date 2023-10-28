@@ -189,3 +189,32 @@ html, body {
 .content {
   transform: var(--antiSkew);
 }
+
+
+.moving-square-container {
+  width: 100%;
+  position: relative;
+}
+.moving-square {
+  width: 50px;
+  height: 50px;
+  background-color: #3498db;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: moveSquare 6s linear infinite;
+}
+
+@keyframes moveSquare {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: calc(100% - 50px); /* Move the square to the right edge of the window */
+  }
+
+  100% {
+    left: 0; /* Move the square back to the left edge */
+  }
+}
