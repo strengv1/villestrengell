@@ -3,7 +3,7 @@
 const Footer = () => (
   <div className="footer container">
     <div className="row justify-content-center content container ">
-      <div className="col-lg-2 col-md-4 col-5">
+      <div className="col-lg-2 col-md-4 col-6">
         {/* Ugly svg of a cute raccoon */}
         <svg width="203" height="167" viewBox="0 0 203 167" fill="none">
           <g id="Raccoon" clipPath="url(#clip0_1_2)">
