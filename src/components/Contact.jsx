@@ -8,7 +8,7 @@ const Contact = (props, ref) => {
 
   const inputClass = "w-75 m-1"
   return(
-    <div className="contact container " ref={ref}>
+    <div className="contact container" ref={ref}>
       <div className="content">
         <div className="row justify-content-center">
           <h2 className="common-title" >Let&apos;s Connect!</h2>
@@ -43,7 +43,7 @@ const Contact = (props, ref) => {
           <div className="input-container">
             <textarea 
               className={inputClass}
-              rows="3"
+              rows="5"
               placeholder="Hey! Would you be interested in..."
               onChange={({ target }) => setMessage(target.value)}
             />

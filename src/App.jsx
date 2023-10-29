@@ -15,7 +15,6 @@ function App() {
       <About />
       <Contact ref={refToContact}/>
       <Footer />
-
     </div>
   )
 }

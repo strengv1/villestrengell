@@ -25,7 +25,7 @@ const Hero = ({ refToContact }) => {
 
   return (
     <>
-      <img className="hero-bg" loading="lazy" src={ randomImage.smallSource } ></img>
+      <img className="hero-bg" loading="lazy" src={ randomImage.largeSource } ></img>
       <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>Image from Pexels by {randomImage.user}</span>
       <div className="hero container">  
         
@@ -44,7 +44,7 @@ const Hero = ({ refToContact }) => {
           </div>
         </div>
         <div className="row justify-content-center align-items-center">
-          <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex align-items-center justify-content-center">
+          <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex  justify-content-center">
             <button className="button cta" onClick={scrollToContact}> Contact me!</button>
           </div>
           <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex align-items-center justify-content-center">
