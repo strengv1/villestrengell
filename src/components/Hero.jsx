@@ -30,7 +30,7 @@ const Hero = ({ refToContact }) => {
       <div className="hero container">  
         
         <div className="row justify-content-center">
-          <div className="col-8">
+          <div className="col-10 col-md-8">
             <h1 className="hero-title">
               Elevate Your Digital World with a Front-End Programmer
             </h1>

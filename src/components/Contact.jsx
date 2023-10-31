@@ -1,12 +1,15 @@
 import { useState, forwardRef } from 'react'
 
 const Contact = (props, ref) => {
-  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  
+ 
+  const sendEmail = () => {
+    alert(`Email sent from ${email} with message ${message}`)
+  }
 
-
-  const inputClass = "w-75 m-1"
+  const inputClass = ""
   return(
     <div className="contact container" ref={ref}>
       <div className="content">
@@ -20,35 +23,29 @@ const Contact = (props, ref) => {
           </div>
           
         </div>
-        <form className="contact-form">
-          <div className="input-container">
-            <input
-              className={inputClass}
-              type="text"
-              name="name"
-              placeholder="John Doe"
-              onChange={({ target }) => setName(target.value)}
-            />
-          </div>
-
+        <form className="contact-form" onSubmit={sendEmail}>
           <div className="input-container">
             <input
               className={inputClass}
               type="email"
               name="email"
-              placeholder="john.doe@email.org"
+              required
               onChange={({ target }) => setEmail(target.value)}
             />
+            <span>Your email</span>
           </div>
           <div className="input-container">
             <textarea 
               className={inputClass}
               rows="5"
-              placeholder="Hey! Would you be interested in..."
+              required
               onChange={({ target }) => setMessage(target.value)}
             />
+            <span>Message</span>
           </div>
           <button className="submit-button" type="submit">Send</button>
+
+          
         </form>
       </div> 
     </div>

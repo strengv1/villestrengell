@@ -42,7 +42,7 @@ html, body {
   object-fit: cover;
   z-index: -1;
   transform: translateZ(-9.9px);
-  scale: 2;
+  scale: 2;  
 }
 .hero-btn-wrapper {
   min-height: 6rem;
@@ -158,15 +158,90 @@ html, body {
   text-align: center;
   background-color: #5f2826;
   padding: 5rem;
-  color: #e7a31a;
+  color: #FFF;
   transform: var(--skew);
   transform-origin: 0;
 }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.input-container {
+  width: 30em;
+  position: relative;
+  transition: 0.5s;
+}
 .input-container input {
-  max-width: 25em;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255, 0.3);
+  border-radius: 15px;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
 }
 .input-container textarea {
-  max-width: 35em;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255, 0.3);
+  border-radius: 15px;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+}
+.input-container span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.input-container input:focus ~ span,
+.input-container input:valid ~ span,
+.input-container textarea:focus ~ span,
+.input-container textarea:valid ~ span {
+  color: #e7a31a;
+  transform: translate(20px, -10px);
+  font-size: 0.8em;
+  padding: 0 10px;
+  background-color: #5f2826;
+  border-left: 1px solid #e7a31a;
+  border-right: 1px solid #e7a31a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.input-container input:valid,
+.input-container input:focus,
+.input-container textarea:valid,
+.input-container textarea:focus {
+  border: 1px solid #e7a31a;
+}
+.submit-button {
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: 1px solid #e7a31a;
+  padding: 10px 30px;
+  position: relative;
+}
+.submit-button::before {
+  content: '';
+  position: absolute;
+  background-color: #e7a31a;
+  z-index:-1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 280ms ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.submit-button:focus::before,
+.submit-button:hover::before {
+  transform: scaleX(1.01);
 }
 
 .footer {
