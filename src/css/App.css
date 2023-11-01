@@ -20,6 +20,18 @@ html, body {
   perspective: 10px;
 }
 
+
+.common-title {
+  text-align: center;
+  font-size: clamp(2rem, 2.5vw, 3.2em);
+  color: #e7a31a;
+}
+.common-paragraph {
+  padding: 2rem;
+  color: white;
+}
+
+
 .hero {
   text-align: center;
   position: relative;
@@ -37,6 +49,7 @@ html, body {
 }
 .hero-bg {
   position: absolute;
+  
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -137,17 +150,6 @@ html, body {
   letter-spacing: 2px;
 }
 
-
-.common-title {
-  text-align: center;
-  font-size: clamp(2rem, 2.5vw, 3.2em);
-  color: #e7a31a;
-}
-.common-paragraph {
-  padding: 2rem;
-  color: white;
-}
-
 .about {
   padding-top: 5em;
   border-radius: 5em 5em 0 0;
@@ -235,13 +237,14 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  transition: all 280ms ease-in-out;
+  transition: all 400ms ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
 }
 .submit-button:focus::before,
 .submit-button:hover::before {
   transform: scaleX(1.01);
+  
 }
 
 .footer {
@@ -272,7 +275,7 @@ svg {
 }
 #waving-paw {
   opacity: 0;
-  transform-origin: 64% 105% ;
+  transform-origin: 64% 105%;
 }
 #mouth-hover,
 #eyebrow-l-hover,
