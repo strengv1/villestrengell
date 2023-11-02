@@ -15,10 +15,12 @@ const Contact = (props, ref) => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then((result) => {
-          console.log(result.text);
+          // console.log(result.text);
+          alert('Email sent succesfully! Talk to you soon :)')
           e.target.reset()
       }, (error) => {
-          console.log(error.text);
+          alert('Something went wrong, please try again.')
+          // console.log(error.text);
       });
   };
 
