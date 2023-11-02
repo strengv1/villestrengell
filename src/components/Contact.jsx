@@ -2,6 +2,41 @@ import { forwardRef, useRef } from 'react'
 import emailjs from '@emailjs/browser';
 import { SocialIcon } from 'react-social-icons'
 
+const ContactForm = ({formRef, sendEmail}) => (
+  <form ref={formRef} className="contact-form" onSubmit={sendEmail}>
+    <div className="input-container">
+      <input
+        type="email"
+        name="user_email"
+        required
+      />
+      <span>Your email</span>
+    </div>
+    <div className="input-container">
+      <textarea
+        name="message"
+        rows="5"
+        required
+      />
+      <span>Message</span>
+    </div>
+    <button className="submit-button" type="submit">Send</button>
+  </form>
+)
+
+const SocialIcons = () => (
+  <>
+    <div className="col-4" />
+      <div className="col-2">
+        <SocialIcon network="github" url="www.github.com/strengv1" />
+      </div>
+      <div className="col-2">
+        <SocialIcon network="instagram" url="www.instagram.com/villestrengell" />
+      </div>
+    <div className="col-4" />
+  </>
+)
+
 const Contact = (props, ref) => {
   const form = useRef();
  
@@ -15,13 +50,11 @@ const Contact = (props, ref) => {
         form.current,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
-      .then((result) => {
-          // console.log(result.text);
+      .then(() => {
           alert('Email sent succesfully! I will get back to you as soon as possible :)')
           e.target.reset()
-      }, (error) => {
+      }, () => {
           alert('Something went wrong, please try again.')
-          // console.log(error.text);
       });
   };
 
@@ -30,7 +63,7 @@ const Contact = (props, ref) => {
       <div className="content container">
         <div className="row justify-content-center">
           <div className="col-8">
-            <h2 className="common-title" >Let&apos;s Connect!</h2>
+            <h2 className="common-title">Let&apos;s Connect!</h2>
           </div>
           <div className="common-paragraph">
             Ready to bring your project to life? Have a job opportunity for me? Reach out and let&apos;s start coding together.
@@ -39,38 +72,14 @@ const Contact = (props, ref) => {
             </p>
           </div>
         </div>
-        <div className="row">
-          <form ref={form} className="contact-form" onSubmit={sendEmail}>
-            <div className="input-container">
-              <input
-                type="email"
-                name="user_email"
-                required
-              />
-              <span>Your email</span>
-            </div>
-            <div className="input-container">
-              <textarea
-                name="message"
-                rows="5"
-                required
-              />
-              <span>Message</span>
-            </div>
-            <button className="submit-button" type="submit">Send</button>
-          </form>
+        <div className="row justify-content-center">
+          <div className="col-xs-10 col-sm-8">
+            <ContactForm formRef={form} sendEmail={sendEmail} />
+          </div>
         </div>
         
-
         <div className="row justify-content-evenly pt-5">
-          <div className="col-4" />
-          <div className="col-2">
-            <SocialIcon network="github" url="www.github.com/strengv1" />
-          </div>
-          <div className="col-2">
-            <SocialIcon network="instagram" url="www.instagram.com/villestrengell" />
-          </div>
-          <div className="col-4" />
+          <SocialIcons />
         </div>
       </div>
 

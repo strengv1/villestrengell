@@ -10,7 +10,45 @@ import bg3lg from './../assets/roberto-shumski-lg.jpg'
 // import bg4 from './../assets/bg-4.png'
 // import bg5 from './../assets/bg-5.png'
 
+const Title = () => (
+  <div className="row justify-content-center">
+    <div className="col-10 col-md-8">
+      <h1 className="hero-title">
+        Hey! I&apos;m <span>Ville</span>  <span>Strengell</span>
+      </h1>
+    </div>
+  </div>
+)
 
+const SubTitle = () => (
+  <div className="row justify-content-center">
+    <div className="col-10">
+      <p className="hero-paragraph">
+        Web Developer, student and a friend
+      </p>
+    </div>
+  </div>
+)
+
+const Buttons = ({ refToContact }) => {
+
+  const scrollToContact = () => {
+    refToContact.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <div className="row justify-content-center align-items-center">
+    {/* Call to Action */}
+      <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex  justify-content-center">
+        <button className="button cta" onClick={scrollToContact}> Contact me!</button>
+      </div>
+    {/* Secondary call to Action */}
+      <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex align-items-center justify-content-center">
+        <button onClick={() => location.href='www.github.com/strengv1'}  className="button secondary-cta">Explore My Work</button>
+      </div>
+    </div>
+  )
+}
 const Hero = ({ refToContact }) => {
   const images = [
     {
@@ -21,47 +59,18 @@ const Hero = ({ refToContact }) => {
     },
     {
       user: 'Roberto Shumski', src: bg3lg
-    },
-    // {
-    //   user: 'imagine.art', src: bg4
-    // },
-    // {
-    //   user: 'imagine.art', src: bg5
-    // }
+    }
   ]
   const randomImage = images[ Math.floor(Math.random() * ((images.length)))]
-  
-  const scrollToContact = () => {
-    refToContact.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <>
       <img className="hero-bg" loading="lazy" src={ randomImage.src } ></img>
       <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>Image from Pexels by {randomImage.user}</span>
+      
       <div className="hero container">  
-        <div className="row justify-content-center">
-          <div className="col-10 col-md-8">
-            <h1 className="hero-title">
-              Hey! I&apos;m <span>Ville</span>  <span>Strengell</span>
-            </h1>
-          </div>
-        </div>
-        <div className="row justify-content-center">
-          <div className="col-10">
-            <p className="hero-paragraph">
-              Web Developer, student and a friend
-            </p>
-          </div>
-        </div>
-        <div className="row justify-content-center align-items-center">
-          <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex  justify-content-center">
-            <button className="button cta" onClick={scrollToContact}> Contact me!</button>
-          </div>
-          <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex align-items-center justify-content-center">
-            <button className="button secondary-cta">Explore My Work</button>
-          </div>
-        </div>
+        <Title />
+        <SubTitle />
+        <Buttons refToContact={ refToContact }/>
       </div>
     </>
   )

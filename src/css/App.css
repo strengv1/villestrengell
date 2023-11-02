@@ -6,7 +6,6 @@ body {
   background-size: cover;
 }
 
-
 html, body {
   margin:0;
   --skew: skewY(-2deg);
@@ -23,10 +22,9 @@ html, body {
   perspective: 10px;
 }
 
-
 .common-title {
   text-align: center;
-  font-size: clamp(2rem, 2.5vw, 3.2em);
+  font-size: clamp(2.2em, 2.5vw, 3.4em);
   color: var(--color-gold);
   position: relative;
   overflow: hidden;
@@ -35,6 +33,7 @@ html, body {
 .common-paragraph {
   padding: 2rem;
   color: white;
+  font-size: clamp(1em, 1.6vw, 1.3em);
 }
 
 .hero-paragraph {
@@ -58,7 +57,6 @@ html, body {
 }
 .hero-bg {
   position: absolute;
-  
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -305,9 +303,9 @@ svg:hover {
   }
   #waving-paw {
     opacity: 1;
-    -webkit-animation: wave 3s linear infinite;
-    -moz-animation: wave 3s linear infinite;
-    animation: wave 0.8s linear infinite;
+    -webkit-animation: wave 0.5s linear infinite;
+    -moz-animation: wave 0.5s linear infinite;
+    animation: wave 0.5s linear infinite;
   }
 }
 @-moz-keyframes wave {

@@ -10,6 +10,7 @@ const About = () => (
       <div className="col-md-5">
         <p className="common-paragraph">
           I&apos;m a soon-to-be university graduate, with a passion for front-end programming.
+          <br/><br/>
           For three years I worked part-time as a software developer alongside my studies. During the employment I was a part of a team that tackled a complete overhaul of a web portal&apos;s front-end.
           During this project I found my calling to be a front-end dev.
           Immediately I started taking courses in web software development, and started to get familiar with the basics of web design in my free time.
