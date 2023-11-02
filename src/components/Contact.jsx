@@ -1,15 +1,27 @@
-import { useState, forwardRef } from 'react'
+import { forwardRef, useRef } from 'react'
+import emailjs from '@emailjs/browser';
 
 const Contact = (props, ref) => {
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  
+  const form = useRef();
  
-  const sendEmail = () => {
-    alert(`Email sent from ${email} with message ${message}`)
-  }
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  const inputClass = ""
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then((result) => {
+          console.log(result.text);
+          e.target.reset()
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
+
   return(
     <div className="contact container" ref={ref}>
       <div className="content">
@@ -21,36 +33,30 @@ const Contact = (props, ref) => {
               You can reach me at <b>villes-97@hotmail.com</b>, or use the contact form below to do so directly
             </p>
           </div>
-          
         </div>
-        <form className="contact-form" onSubmit={sendEmail}>
+
+        <form ref={form} className="contact-form" onSubmit={sendEmail}>
           <div className="input-container">
             <input
-              className={inputClass}
               type="email"
-              name="email"
+              name="user_email"
               required
-              onChange={({ target }) => setEmail(target.value)}
             />
             <span>Your email</span>
           </div>
           <div className="input-container">
-            <textarea 
-              className={inputClass}
+            <textarea
+              name="message"
               rows="5"
               required
-              onChange={({ target }) => setMessage(target.value)}
             />
             <span>Message</span>
           </div>
           <button className="submit-button" type="submit">Send</button>
-
-          
         </form>
       </div> 
     </div>
   )
 }
-  
 
 export default forwardRef(Contact)
