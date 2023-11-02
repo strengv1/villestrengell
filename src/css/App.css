@@ -42,7 +42,8 @@ html, body {
 }
 
 .hero-paragraph {
-  color: white;
+  color: black;
+  text-shadow: 2px 2px 2px white;
   font-size: clamp(1.2rem, 2.5vw, 2em);
 }
 .hero {
@@ -56,9 +57,22 @@ html, body {
   z-index: -1;
 }
 .hero-title {
-  color: white;
-  text-shadow: 0 0 6px black;
+  color: black;
+  text-shadow: 3px 3px 3px white;
   font-size: clamp(2.5rem, 5vw, 3.6em)
+}
+.hero-bg-mask {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 100%;
+  height: 30%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6); /* Change the opacity by adjusting the last value (0.5) */
+  backdrop-filter: blur(40px); /* Adjust the blur radius as needed */
+  filter: blur(40px); /* Fallback for older browsers */
 }
 .hero-bg {
   position: absolute;

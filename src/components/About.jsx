@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const IntroText = () => (
   <div className="row justify-content-center">
     <div className="col-md-6 text-center">
-      <img className="about-picture" src={cvPicture} />
+      <img className="about-picture" loading="lazy" src={cvPicture} />
     </div>
 
     <div className="col-md-6">
@@ -23,14 +23,14 @@ const IntroText = () => (
 
 const MinesweeperSection = () => (
   <div className="row justify-content-center">
-    <div className="col-md-4">
+    <div className="col-md-5">
       <p className="common-paragraph">
         My first own React project was Minesweeper! Check it out <Link to='/minesweeper' >Here</Link>
       </p>
     </div>
 
     <div className="col-md-6 text-center" >
-      <img className="about-picture" style={{width: "50%"}} src={minesweeperPicture} />
+      <img className="about-picture" loading="lazy" style={{width: "50%"}} src={minesweeperPicture} />
     </div>
   </div>
 )

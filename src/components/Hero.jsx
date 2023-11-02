@@ -1,9 +1,9 @@
 // import bg1 from './../assets/simon-berger.jpg'
-import bg1lg from './../assets/simon-berger-lg.jpg'
+// import bg1lg from './../assets/simon-berger-lg.jpg'
 // import bg2 from './../assets/pok-rie.jpg'
-import bg2lg from './../assets/pok-rie-lg.jpg'
+// import bg2lg from './../assets/pok-rie-lg.jpg'
 // import bg3 from './../assets/roberto-shumski.jpg'
-import bg3lg from './../assets/roberto-shumski-lg.jpg'
+// import bg3lg from './../assets/roberto-shumski-lg.jpg'
 // import bg1 from './../assets/bg-1.png'
 // import bg2 from './../assets/bg-2.png'
 // import bg3 from './../assets/bg-3.png'
@@ -23,7 +23,9 @@ const Title = () => (
 const SubTitle = () => (
   <div className="row justify-content-center">
     <div className="col-10">
+      <div className="hero-bg-mask" />
       <p className="hero-paragraph">
+
         Web Developer, student and a friend
       </p>
     </div>
@@ -56,23 +58,13 @@ const Buttons = ({ refToContact }) => {
   )
 }
 const Hero = ({ refToContact }) => {
-  const images = [
-    {
-      user: 'Simon Berger', src: bg1lg
-    },
-    {
-      user: 'Pok Rie', src: bg2lg
-    },
-    {
-      user: 'Roberto Shumski', src: bg3lg
-    }
-  ]
-  const randomImage = images[ Math.floor(Math.random() * ((images.length)))]
+  //images[ Math.floor(Math.random() * ((images.length)))]
   return (
-    <>
-      <img className="hero-bg" loading="lazy" src={ randomImage.src } ></img>
+    <>                                        {/*src={ randomImage.src }*/}
+      <img className="hero-bg" loading="lazy" src='https://picsum.photos/1920/1080' />
+      
       <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>
-        Image from Pexels by {randomImage.user}
+        Random image from https://picsum.photos/
       </span>
 
       <div className="hero container">
