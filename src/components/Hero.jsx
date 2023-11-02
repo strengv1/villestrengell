@@ -43,14 +43,14 @@ const Hero = ({ refToContact }) => {
         <div className="row justify-content-center">
           <div className="col-10 col-md-8">
             <h1 className="hero-title">
-              Elevate Your Digital World with a Front-End Programmer
+              Hey! I&apos;m <span>Ville</span>  <span>Strengell</span>
             </h1>
           </div>
         </div>
         <div className="row justify-content-center">
           <div className="col-10">
-            <p style={{color:"white"}}>
-              Welcome to my digital playground, where innovation meets code.
+            <p className="hero-paragraph">
+              Web Developer, student and a friend
             </p>
           </div>
         </div>

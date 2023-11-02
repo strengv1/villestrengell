@@ -27,14 +27,20 @@ html, body {
 .common-title {
   text-align: center;
   font-size: clamp(2rem, 2.5vw, 3.2em);
-  color: var(--color-gold)
+  color: var(--color-gold);
+  position: relative;
+  overflow: hidden;
 }
+
 .common-paragraph {
   padding: 2rem;
   color: white;
 }
 
-
+.hero-paragraph {
+  color: white;
+  font-size: clamp(1.2rem, 2.5vw, 2em);
+}
 .hero {
   text-align: center;
   position: relative;
@@ -48,7 +54,7 @@ html, body {
 .hero-title {
   color: white;
   text-shadow: 0 0 6px black;
-  font-size: clamp(1.8rem, 5vw, 3.2em)
+  font-size: clamp(2.5rem, 5vw, 3.6em)
 }
 .hero-bg {
   position: absolute;
@@ -156,9 +162,12 @@ html, body {
 .about {
   padding-top: 5em;
   border-radius: 5em 5em 0 0;
-  background-color: #522321;
+  background-color: var(--color-dark-burgundy);
 }
-
+.about-picture {
+  padding-top:2rem;
+  width: 90%;
+}
 .contact {
   text-align: center;
   background-color: var(--color-light-burgundy);
@@ -248,7 +257,7 @@ html, body {
 }
 
 .footer {
-  background-color: #522321;
+  background-color: var(--color-dark-burgundy);
   margin-top: -1rem;
   padding: 5rem;
   transform: var(--skew);
@@ -261,7 +270,7 @@ html, body {
   bottom: 0px;
   left: 0px;
   position: absolute;
-  background-color: #522321;
+  background-color: var(--color-dark-burgundy);
   transform: var(--antiSkew);
   transform-origin: 0;
 }
