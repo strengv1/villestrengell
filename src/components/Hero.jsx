@@ -71,9 +71,11 @@ const Hero = ({ refToContact }) => {
   return (
     <>
       <img className="hero-bg" loading="lazy" src={ randomImage.src } ></img>
-      <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>Image from Pexels by {randomImage.user}</span>
-      
-      <div className="hero container">  
+      <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>
+        Image from Pexels by {randomImage.user}
+      </span>
+
+      <div className="hero container">
         <Title />
         <SubTitle />
         <Buttons refToContact={ refToContact }/>

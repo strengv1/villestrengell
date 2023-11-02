@@ -1,10 +1,13 @@
-
+import { Link } from 'react-router-dom'
 
 const Header = ({ width, height, mineCount, functions }) => {
 
   const [setWidth, setHeight, setMineCount, initializeGrid] = functions
   return (
     <div className="header">
+
+      <Link to='/' style={{position:"absolute", left:"20px", top:"10px"}}>Back</Link>
+
       <h1>Minesweeper</h1>
 
       <label htmlFor="width">Grid width</label>

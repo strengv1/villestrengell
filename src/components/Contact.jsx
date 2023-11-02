@@ -1,31 +1,35 @@
 import { forwardRef, useRef } from 'react'
-import emailjs from '@emailjs/browser';
 import { SocialIcon } from 'react-social-icons'
+import emailjs from '@emailjs/browser';
 
 const ContactForm = ({formRef, sendEmail}) => (
-  <form ref={formRef} className="contact-form" onSubmit={sendEmail}>
-    <div className="input-container">
-      <input
-        type="email"
-        name="user_email"
-        required
-      />
-      <span>Your email</span>
+  <div className="row justify-content-center">
+    <div className="col-xs-10 col-sm-8">
+      <form ref={formRef} className="contact-form" onSubmit={sendEmail}>
+        <div className="input-container">
+          <input
+            type="email"
+            name="user_email"
+            required
+          />
+          <span>Your email</span>
+        </div>
+        <div className="input-container">
+          <textarea
+            name="message"
+            rows="5"
+            required
+          />
+          <span>Message</span>
+        </div>
+        <button className="submit-button" type="submit">Send</button>
+      </form>
     </div>
-    <div className="input-container">
-      <textarea
-        name="message"
-        rows="5"
-        required
-      />
-      <span>Message</span>
-    </div>
-    <button className="submit-button" type="submit">Send</button>
-  </form>
+  </div>
 )
 
 const SocialIcons = () => (
-  <>
+  <div className="row justify-content-evenly pt-5">
     <div className="col-4" />
       <div className="col-2">
         <SocialIcon target="_blank" network="github" url="http://www.github.com/strengv1" />
@@ -34,12 +38,12 @@ const SocialIcons = () => (
         <SocialIcon target="_blank" network="instagram" url="http://www.instagram.com/villestrengell" />
       </div>
     <div className="col-4" />
-  </>
+  </div>
 )
 
 const Contact = (props, ref) => {
   const form = useRef();
- 
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -55,8 +59,8 @@ const Contact = (props, ref) => {
           e.target.reset()
       }, () => {
           alert('Something went wrong, please try again.')
-      });
-  };
+      })
+  }
 
   return(
     <div className="contact container" ref={ref}>
@@ -65,22 +69,20 @@ const Contact = (props, ref) => {
           <div className="col-8">
             <h2 className="common-title">Let&apos;s Connect!</h2>
           </div>
-          <div className="common-paragraph">
-            Ready to bring your project to life? Have a job opportunity for me? Reach out and let&apos;s start coding together.
-            <p>
-              You can reach me at <b>villes-97@hotmail.com</b>, or use the contact form below to do so directly
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <p className="common-paragraph">
+              Ready to bring your project to life? Have a job opportunity for me? Reach out and let&apos;s start coding together.
+              <br/><br/>
+              You can reach me at <b>villes-97@hotmail.com</b>, or use the contact form below.
             </p>
           </div>
         </div>
-        <div className="row justify-content-center">
-          <div className="col-xs-10 col-sm-8">
-            <ContactForm formRef={form} sendEmail={sendEmail} />
-          </div>
-        </div>
         
-        <div className="row justify-content-evenly pt-5">
-          <SocialIcons />
-        </div>
+        <ContactForm formRef={form} sendEmail={sendEmail} />
+        
+        <SocialIcons />
       </div>
 
     </div>

@@ -1,4 +1,3 @@
-
 const Footer = () => (
   <div className="footer container">
     <div className="row justify-content-center content container ">
@@ -65,9 +64,5 @@ const Footer = () => (
     </div>
   </div>
 )
-
-
-
-  
 
 export default Footer
