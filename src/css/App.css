@@ -260,6 +260,7 @@ html, body {
   padding: 5rem;
   transform: var(--skew);
   transform-origin: 0;
+  
 }
 .footer::after {
   content: "";

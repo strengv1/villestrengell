@@ -28,10 +28,10 @@ const SocialIcons = () => (
   <>
     <div className="col-4" />
       <div className="col-2">
-        <SocialIcon network="github" url="www.github.com/strengv1" />
+        <SocialIcon target="_blank" network="github" url="http://www.github.com/strengv1" />
       </div>
       <div className="col-2">
-        <SocialIcon network="instagram" url="www.instagram.com/villestrengell" />
+        <SocialIcon target="_blank" network="instagram" url="http://www.instagram.com/villestrengell" />
       </div>
     <div className="col-4" />
   </>

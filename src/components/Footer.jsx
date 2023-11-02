@@ -1,4 +1,3 @@
-// import raccoon from './../assets/waving-raccoon.svg'
 
 const Footer = () => (
   <div className="footer container">

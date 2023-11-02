@@ -44,7 +44,13 @@ const Buttons = ({ refToContact }) => {
       </div>
     {/* Secondary call to Action */}
       <div className="col-12 col-sm-6 col-md-4 hero-btn-wrapper d-flex align-items-center justify-content-center">
-        <button onClick={() => location.href='www.github.com/strengv1'}  className="button secondary-cta">Explore My Work</button>
+        <a
+          href="https://www.github.com/strengv1"
+          target="_blank"
+          rel="noreferrer"
+          className="button secondary-cta">
+          Explore My Work
+        </a>
       </div>
     </div>
   )

@@ -1,0 +1,120 @@
+html {
+  height: 100%;
+  background-image: linear-gradient(to right top, #f0b97d, #e0ba6c, #cabc60, #b0bf59, #90c159, #7dc768, #67cd78, #4bd28b, #45dda6, #45e7c1, #4ef1da, #5ffbf1);  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.body {
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.header {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.timerContainer {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  gap: 100px;
+  grid-auto-flow: column;
+  color: white;
+}
+
+.gameOverText {
+  font-size: 4.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  color: black;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.5)
+}
+
+.board {
+  display: grid;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(var(--size), auto);
+  width: 90%;
+  max-width: 350px;
+}
+
+.tile {
+  width: 30px;
+  height: 30px;
+  border: 2px;
+  border-style: solid;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.hidden {
+  border-color: grey;
+  background-image: url("assets/hidden.png");
+}
+
+.tile.open {
+  border-color: grey;
+  background-color: white;
+}
+.tile.open.nro_1 {
+  background-image: url("assets/nro_1.png");
+}
+.tile.open.nro_2 {
+  background-image: url("assets/nro_2.png");
+}
+.tile.open.nro_3 {
+  background-image: url("assets/nro_3.png");
+}
+.tile.open.nro_4 {
+  background-image: url("assets/nro_4.png");
+}
+.tile.open.nro_5 {
+  background-image: url("assets/nro_5.png");
+}
+.tile.open.nro_6 {
+  background-image: url("assets/nro_6.png");
+}
+.tile.open.nro_7 {
+  background-image: url("assets/nro_7.png");
+}
+.tile.open.nro_8 {
+  background-image: url("assets/nro_8.png");
+}
+
+.tile.mine {
+  border-color: grey;
+  background-image: url("assets/mine.png");
+}
+.tile.mine_exploded {
+  border-color: grey;
+  background-image: url("assets/mine_exploded.png");
+}
+
+.tile.flag {
+  border-color: grey;
+  background-image: url("assets/flag.png");
+}
+.tile.flag_incorrect {
+  border-color: grey;
+  background-image: url("assets/flag_incorrect.png");
+}
+
+.hidden:hover:not(.disabled) {
+  border-color: black;
+}
+
+
+
