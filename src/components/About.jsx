@@ -1,4 +1,4 @@
-import cvPicture from './../assets/me.jpeg'
+import cvPicture from './../assets/me.jpg'
 import minesweeperPicture from './../assets/minesweeper.png'
 import { Link } from 'react-router-dom'
 

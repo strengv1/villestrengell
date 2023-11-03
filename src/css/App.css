@@ -73,6 +73,10 @@ html, body {
   background-color: rgba(255, 255, 255, 0.6); /* Change the opacity by adjusting the last value (0.5) */
   backdrop-filter: blur(40px); /* Adjust the blur radius as needed */
   filter: blur(40px); /* Fallback for older browsers */
+  -webkit-filter: blur(40px);
+  -moz-filter: blur(40px);
+  -o-filter: blur(40px);
+  -ms-filter: blur(40px);
 }
 .hero-bg {
   position: absolute;
@@ -81,7 +85,8 @@ html, body {
   object-fit: cover;
   z-index: -1;
   transform: translateZ(-9.9px);
-  scale: 2;  
+  scale: 2;
+  filter: brightness(80%)
 }
 .hero-btn-wrapper {
   min-height: 6rem;
@@ -180,11 +185,13 @@ html, body {
   padding-top: 5em;
   border-radius: 5em 5em 0 0;
   background-color: var(--color-dark-burgundy);
+  max-width: 1000px !important;
 }
 .about-picture {
-  width: 90%;
+  width: 80%;
+  border-radius: 30%;
   margin: 2rem auto;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 3px 3px 6px black;
 }
 .contact {
   text-align: center;
@@ -193,6 +200,7 @@ html, body {
   color: #FFF;
   transform: var(--skew);
   transform-origin: 0;
+  max-width: 1000px !important;
 }
 .contact-form {
   display: flex;
@@ -280,7 +288,7 @@ html, body {
   padding: 5rem;
   transform: var(--skew);
   transform-origin: 0;
-  
+  max-width: 1000px !important;
 }
 .footer::after {
   content: "";
