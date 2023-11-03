@@ -1,14 +1,11 @@
-// import bg1 from './../assets/simon-berger.jpg'
-// import bg1lg from './../assets/simon-berger-lg.jpg'
-// import bg2 from './../assets/pok-rie.jpg'
-// import bg2lg from './../assets/pok-rie-lg.jpg'
-// import bg3 from './../assets/roberto-shumski.jpg'
-// import bg3lg from './../assets/roberto-shumski-lg.jpg'
-// import bg1 from './../assets/bg-1.png'
-// import bg2 from './../assets/bg-2.png'
-// import bg3 from './../assets/bg-3.png'
-// import bg4 from './../assets/bg-4.png'
-// import bg5 from './../assets/bg-5.png'
+import bg1 from './../assets/simon-berger.jpg'
+import bg2 from './../assets/pok-rie.jpg'
+import bg3 from './../assets/peter-fazekas.jpg'
+import bg4 from './../assets/david-selbert.jpg'
+import bg5 from './../assets/nathan-cowley.jpg'
+import bg6 from './../assets/pixabay.jpg'
+import bg7 from './../assets/veeterzy.jpg'
+import bg8 from './../assets/roberto-shumski.jpg'
 
 const Title = () => (
   <div className="row justify-content-center">
@@ -58,15 +55,25 @@ const Buttons = ({ refToContact }) => {
   )
 }
 const Hero = ({ refToContact }) => {
-  //images[ Math.floor(Math.random() * ((images.length)))]
+  const images = [
+    { src: bg1, user: 'Simon Berger' },
+    { src: bg2, user: 'Pok RIe' },
+    { src: bg3, user: 'Peter Fazekas' },
+    { src: bg4, user: 'David-Selbert' },
+    { src: bg5, user: 'Nathan Cowley' },
+    { src: bg6, user: 'Pixabay' },
+    { src: bg7, user: 'Veeterzy' },
+    { src: bg8, user: 'Roberto Shumski' }
+  ]
+  const randomImage = images[ Math.floor(Math.random() * ((images.length)))]
+  
   return (
-    <>                                        {/*src={ randomImage.src }*/}
-      <img className="hero-bg" loading="lazy" src='https://picsum.photos/1920/1080' />
+    <>                                       {/*src='https://picsum.photos/1920/1080'*/}
+      <img className="hero-bg" loading="lazy" src={randomImage.src} />
       
       <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>
-        Random image from https://picsum.photos/
+        Random image from Pexels by {randomImage.user}
       </span>
-
       <div className="hero container">
         <Title />
         <SubTitle />
