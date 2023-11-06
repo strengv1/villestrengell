@@ -13,6 +13,10 @@ html, body {
   --color-gold: #e7a31a;
   --color-dark-burgundy: #522321;
   --color-light-burgundy: #5f2826;
+  --font-size-small: clamp(1em, 1.6vw, 1.3em);
+  --font-size-medium: clamp(1.2rem, 2.5vw, 2em);
+  --font-size-large: clamp(2.2em, 2.5vw, 3.4em);
+  --font-size-huge: clamp(2.5rem, 5vw, 3.6em);
 }
   
 .wrapper {
@@ -24,7 +28,7 @@ html, body {
 
 .common-title {
   text-align: center;
-  font-size: clamp(2.2em, 2.5vw, 3.4em);
+  font-size: var(--font-size-large);
   color: var(--color-gold);
   position: relative;
   overflow: hidden;
@@ -32,7 +36,7 @@ html, body {
 .common-paragraph {
   padding: 2rem 1rem;
   color: white;
-  font-size: clamp(1em, 1.6vw, 1.3em);
+  font-size: var(--font-size-small);
   text-align: justify;
 }
 .line {
@@ -42,9 +46,9 @@ html, body {
 }
 
 .hero-paragraph {
-  color: black;
-  text-shadow: 2px 2px 2px white;
-  font-size: clamp(1.2rem, 2.5vw, 2em);
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: var(--font-size-medium);
 }
 .hero {
   text-align: center;
@@ -57,9 +61,9 @@ html, body {
   z-index: -1;
 }
 .hero-title {
-  color: black;
-  text-shadow: 3px 3px 3px white;
-  font-size: clamp(2.5rem, 5vw, 3.6em)
+  color: white;
+  text-shadow: 3px 3px 2px black;
+  font-size: var(--font-size-huge);
 }
 .hero-bg-mask {
   position: absolute;
@@ -67,16 +71,14 @@ html, body {
   left:50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  width: 100%;
-  height: 30%;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.6); /* Change the opacity by adjusting the last value (0.5) */
-  backdrop-filter: blur(40px); /* Adjust the blur radius as needed */
-  filter: blur(40px); /* Fallback for older browsers */
-  -webkit-filter: blur(40px);
-  -moz-filter: blur(40px);
-  -o-filter: blur(40px);
-  -ms-filter: blur(40px);
+  width: 80%;
+  max-width: 800px;
+  height: 45%;
+  min-height: 400px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 40%;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 16px 0px rgba(255,255,255,0.4);
 }
 .hero-bg {
   position: absolute;
@@ -102,7 +104,7 @@ html, body {
 }
 .cta {
   padding: 15px 35px 15px 30px;
-  font-size: 1.8em;
+  font-size: var(--font-size-medium);
   background-color: rgba(0,0,0,0.2);
   position: absolute;
   margin-top: 15px;
@@ -144,7 +146,7 @@ html, body {
 }
 .secondary-cta {
   padding: 15px 20px;
-  font-size: 1.2em;
+  font-size: var(--font-size-small);
   background-color: transparent;
 }
 .secondary-cta::after {

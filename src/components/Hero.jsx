@@ -20,7 +20,6 @@ const Title = () => (
 const SubTitle = () => (
   <div className="row justify-content-center">
     <div className="col-10">
-      <div className="hero-bg-mask" />
       <p className="hero-paragraph">
 
         Web Developer, student and a friend
@@ -70,6 +69,7 @@ const Hero = ({ refToContact }) => {
   return (
     <>                                       {/*src='https://picsum.photos/1920/1080'*/}
       <img className="hero-bg" loading="lazy" src={randomImage.src} />
+      <div className="hero-bg-mask" />
       
       <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>
         Random image from Pexels by {randomImage.user}
