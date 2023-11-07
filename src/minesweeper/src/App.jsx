@@ -1,8 +1,8 @@
-import './styles.css'
 import { useState, useEffect  } from 'react'
 import Grid from './components/grid.jsx'
 import Timer from './components/timer.jsx'
 import Header from './components/header.jsx'
+import './styles.css'
 
 const getXYfromIndex = (index, width) => {
   const x = index%width

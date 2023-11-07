@@ -1,0 +1,73 @@
+.cv-container {
+  height: 100%;
+  
+}
+.cv-left {
+  height: 100%;
+  background-color: #455796;
+  color: white;
+  padding-bottom: 10em;
+}
+
+.cv-image {
+  border-radius: 50%;
+  padding: 2em 4em;
+}
+.cv-left-title {
+  text-align:center;
+  text-decoration: underline;
+}
+.cv-left-paragraph {
+  padding: 0 3em;
+}
+
+.cv-line {
+  width: 80%;
+  margin: 1em auto;
+  border-top: 1px solid #455796;
+}
+.cv-right {
+  background-color: white;
+  color: black;
+  position: relative;
+}
+.lang-buttons{
+  position: fixed;
+  top:10px;
+  right: 10%;
+  height: 34px;
+}
+.lang-buttons button{
+  padding: 2px;
+  width: 40px;
+  border: none;
+  background-color: white;
+  color: blue;
+}
+.lang-buttons button:hover{
+  background-color: rgb(212, 212, 212);
+}
+
+.cv-right h1 {
+  padding: 1em;
+  padding-bottom: 0;
+  font-size: 3.6em;
+}
+.cv-right h1 span{
+  color: #455796;
+}
+.cv-right h3 {
+  margin-left: 3em;
+  font-weight: 300;
+  font-style: italic;
+}
+.cv-right h2 {
+  text-decoration: underline;
+  padding-left: 2em;
+}
+.cv-right p {
+  padding: 0 3em;
+}
+.cv-italic {
+  font-style: italic;
+}

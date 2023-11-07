@@ -6,7 +6,7 @@ const Header = ({ width, height, mineCount, functions }) => {
   return (
     <div className="header">
 
-      <Link to='/' style={{position:"absolute", left:"20px", top:"10px"}}>Back</Link>
+      <Link to='/' style={{position:"absolute", left:"20px", top:"10px", fontSize:"1.3em"}}>Back</Link>
 
       <h1>Minesweeper</h1>
 

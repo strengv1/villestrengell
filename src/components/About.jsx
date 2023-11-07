@@ -1,7 +1,7 @@
-import cvPicture from './../assets/me.jpg'
-import minesweeperPicture from './../assets/minesweeper.png'
 import { Link } from 'react-router-dom'
 import { SocialIcon } from 'react-social-icons'
+import cvPicture from './../assets/me.jpg'
+import minesweeperPicture from './../assets/minesweeper.png'
 
 const SocialIcons = () => (
   <div className="row justify-content-evenly">
@@ -21,9 +21,7 @@ const IntroText = () => (
   
     <div className="col-9 col-md-6 text-center">
         <img className="about-picture" loading="lazy" src={cvPicture} />
-
         <SocialIcons />
-
     </div>
 
     <div className="col-md-6">
@@ -36,8 +34,11 @@ const IntroText = () => (
         Immediately I started taking courses in web software development, and started to get familiar with the basics of web design in my free time.
       </p>
       <p className="common-paragraph p-2 p-md-4">
-      Currently I&apos;m looking to join a workplace that treats its employees as valued individuals and cultivates a strong sense of community. 
+        Currently I&apos;m looking to join a workplace that treats its employees as valued individuals and cultivates a strong sense of community. 
       </p>
+      <Link to='/cv' className="common-paragraph p-2 p-md-4" style={{color:"var(--color-gold)"}}>
+        Check out my CV here!
+      </Link>
     </div>
   </div>
 )
@@ -58,6 +59,7 @@ const MinesweeperSection = () => (
     </div>
   </div>
 )
+
 const Line = () => (
   <div className="line"/>
 )
