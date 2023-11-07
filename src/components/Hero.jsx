@@ -6,6 +6,7 @@ import bg5 from './../assets/nathan-cowley.jpg'
 import bg6 from './../assets/pixabay.jpg'
 import bg7 from './../assets/veeterzy.jpg'
 import bg8 from './../assets/roberto-shumski.jpg'
+import bg9 from './../assets/francesco-ungaro.jpg'
 
 const Title = () => (
   <div className="row justify-content-center">
@@ -62,7 +63,8 @@ const Hero = ({ refToContact }) => {
     { src: bg5, user: 'Nathan Cowley' },
     { src: bg6, user: 'Pixabay' },
     { src: bg7, user: 'Veeterzy' },
-    { src: bg8, user: 'Roberto Shumski' }
+    { src: bg8, user: 'Roberto Shumski' },
+    { src: bg9, user: 'Francesco Ungaro' }
   ]
   const randomImage = images[ Math.floor(Math.random() * ((images.length)))]
   

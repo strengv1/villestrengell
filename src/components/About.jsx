@@ -1,11 +1,29 @@
 import cvPicture from './../assets/me.jpg'
 import minesweeperPicture from './../assets/minesweeper.png'
 import { Link } from 'react-router-dom'
+import { SocialIcon } from 'react-social-icons'
+
+const SocialIcons = () => (
+  <div className="row justify-content-evenly">
+    <div className="col-sm-4" />
+    <div className="col-2">
+      <SocialIcon target="_blank" network="github" url="http://www.github.com/strengv1" />
+    </div>
+    <div className="col-2">
+      <SocialIcon target="_blank" network="instagram" url="http://www.instagram.com/villestrengell" />
+    </div>
+    <div className="col-sm-4" />
+  </div>
+)
 
 const IntroText = () => (
   <div className="row justify-content-center">
+  
     <div className="col-9 col-md-6 text-center">
-      <img className="about-picture" loading="lazy" src={cvPicture} />
+        <img className="about-picture" loading="lazy" src={cvPicture} />
+
+        <SocialIcons />
+
     </div>
 
     <div className="col-md-6">

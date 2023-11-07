@@ -1,5 +1,4 @@
 import { forwardRef, useRef } from 'react'
-import { SocialIcon } from 'react-social-icons'
 import emailjs from '@emailjs/browser';
 
 const ContactForm = ({formRef, sendEmail}) => (
@@ -25,19 +24,6 @@ const ContactForm = ({formRef, sendEmail}) => (
         <button className="submit-button" type="submit">Send</button>
       </form>
     </div>
-  </div>
-)
-
-const SocialIcons = () => (
-  <div className="row justify-content-evenly pt-5">
-    <div className="col-4" />
-      <div className="col-2">
-        <SocialIcon target="_blank" network="github" url="http://www.github.com/strengv1" />
-      </div>
-      <div className="col-2">
-        <SocialIcon target="_blank" network="instagram" url="http://www.instagram.com/villestrengell" />
-      </div>
-    <div className="col-4" />
   </div>
 )
 
@@ -82,7 +68,7 @@ const Contact = (props, ref) => {
         
         <ContactForm formRef={form} sendEmail={sendEmail} />
         
-        <SocialIcons />
+        {/* <SocialIcons /> */}
       </div>
 
     </div>
