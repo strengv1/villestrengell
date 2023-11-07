@@ -11,8 +11,9 @@ const Title = () => (
   <div className="row justify-content-center">
     <div className="col-10 col-md-8">
       <h1 className="hero-title">
-        Hey! I&apos;m <span>Ville</span>  <span>Strengell</span>
+        Hey! I&apos;m <span className="name">Ville Strengell</span>
       </h1>
+      
     </div>
   </div>
 )
@@ -21,8 +22,7 @@ const SubTitle = () => (
   <div className="row justify-content-center">
     <div className="col-10">
       <p className="hero-paragraph">
-
-        Web Developer, student and a friend
+        Web Developer, student and <span>a friend</span>
       </p>
     </div>
   </div>
@@ -72,7 +72,7 @@ const Hero = ({ refToContact }) => {
       <div className="hero-bg-mask" />
       
       <span style={{position: "absolute", top: "5px", right:"5px", color: "white"}}>
-        Random image from Pexels by {randomImage.user}
+        Image from Pexels by {randomImage.user}
       </span>
       <div className="hero container">
         <Title />

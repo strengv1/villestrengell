@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom'
 
 const IntroText = () => (
   <div className="row justify-content-center">
-    <div className="col-md-6 text-center">
+    <div className="col-9 col-md-6 text-center">
       <img className="about-picture" loading="lazy" src={cvPicture} />
     </div>
 
     <div className="col-md-6">
-      <p className="common-paragraph">
+      <p className="common-paragraph p-2 p-md-4">
         I&apos;m a soon-to-be university graduate, with a passion for front-end programming.
       </p>
-      <p className="common-paragraph">
+      <p className="common-paragraph p-2 p-md-4">
         For three years I worked part-time as a software developer alongside my studies. During the employment I was a part of a team that tackled a complete overhaul of a web portal&apos;s front-end.
         During this project I found my calling to be a front-end dev.
         Immediately I started taking courses in web software development, and started to get familiar with the basics of web design in my free time.
+      </p>
+      <p className="common-paragraph p-2 p-md-4">
+      Currently I&apos;m looking to join a workplace that treats its employees as valued individuals and cultivates a strong sense of community. 
       </p>
     </div>
   </div>
@@ -24,13 +27,16 @@ const IntroText = () => (
 const MinesweeperSection = () => (
   <div className="row justify-content-center">
     <div className="col-md-5">
-      <p className="common-paragraph">
-        My first own React project was Minesweeper! Check it out <Link to='/minesweeper' >Here</Link>
+      <p className="common-paragraph p-2 p-md-4">
+        My first own React project was Minesweeper! Check it out <Link to='/minesweeper'>Here</Link>
       </p>
     </div>
 
-    <div className="col-md-6 text-center" >
-      <img className="about-picture" loading="lazy" style={{width: "50%"}} src={minesweeperPicture} />
+    <div className="col-9 col-md-6 text-center" >
+      <Link to='/minesweeper'>
+        <img className="about-picture" loading="lazy" style={{width: "50%"}} src={minesweeperPicture} />
+      </Link>
+      
     </div>
   </div>
 )

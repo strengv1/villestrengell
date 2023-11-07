@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './App';
 
-function Minesweeper() {
+function TicTacToe() {
   return (
     <React.StrictMode>
       <App />
@@ -9,4 +9,4 @@ function Minesweeper() {
   )
 }
   
-export default Minesweeper;
+export default TicTacToe;

@@ -72,7 +72,7 @@ const Contact = (props, ref) => {
         </div>
         <div className="row justify-content-center">
           <div className="col-md-8">
-            <p className="common-paragraph">
+            <p className="common-paragraph" style={{textAlign: "center"}}>
               Ready to bring your project to life? Have a job opportunity for me? Reach out and let&apos;s start coding together.
               <br/><br/>
               You can reach me at <b>villes-97@hotmail.com</b>, or use the contact form below.

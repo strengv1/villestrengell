@@ -1,21 +1,3 @@
-body {
-  background-color: #eedbbd !important;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-html, body {
-  height: 100%;
-  margin:0;
-  --skew: skewY(-2deg);
-  --antiSkew : skewY(2deg);
-  --color-gold: #e7a31a;
-  --color-dark-burgundy: #522321;
-  --color-light-burgundy: #5f2826;
-}
-
 .header {
   display: grid;
   justify-content: center;
