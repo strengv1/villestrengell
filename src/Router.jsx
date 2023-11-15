@@ -24,6 +24,7 @@ const router = createBrowserRouter(
           element={<Game />}
           loader={scoreLoader} />
       </Route>
+      <Route path="*" element={<App />} />
     </Route>
   )
 )
