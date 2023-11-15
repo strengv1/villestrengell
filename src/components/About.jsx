@@ -48,7 +48,7 @@ const MinesweeperSection = () => (
     <div className="col-md-5">
       <p className="common-paragraph p-2 p-md-4">
         My very first own React project was Minesweeper! After completing the game logic, I also built a leaderboard system with Node for the different difficulties.
-        
+        <br/> Note, I am using a free hosting platform for the server, so the initial loading takes ~30s after selecting a difficulty.
         <br/> <Link to='/minesweeper'>Check it out here </Link>
       </p>
     </div>
