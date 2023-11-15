@@ -2,8 +2,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider,
-  Navigate
+  RouterProvider
 } from 'react-router-dom'
 import App from './App'
 import GameLayout from './minesweeper/src/layouts/GameLayout'
@@ -25,7 +24,7 @@ const router = createBrowserRouter(
           element={<Game />}
           loader={scoreLoader} />
       </Route>
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="*" element={<div style={{margin:"2em auto", textAlign: "center"}}><strong>Not found :/</strong></div>} />
     </Route>
   )
 )
