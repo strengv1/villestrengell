@@ -1,28 +1,29 @@
 import { NavLink } from 'react-router-dom'
 
 const DifficultyBar = () => {
-
-  const bsDifficultyCols = 'col-3 col-md-2 col-lg-2 col-xl-1'
+  const commonStyle = {marginInline: "0.5em"}
+  // const bsDifficultyCols = 'col-3 col-md-2 col-lg-2 col-xl-1'
   return(
     <nav>
-      <div className="row difficulty-button-container text-center justify-content-center">
+      <div style={{textAlign:"center"}}>
         <NavLink
-          className={bsDifficultyCols}
           to='/minesweeper/beginner'
+          style={commonStyle}
         >Beginner</NavLink>
-
+         | 
         <NavLink
-          className={bsDifficultyCols}
           to='/minesweeper/intermediate'
+          style={commonStyle}
         >Intermediate</NavLink>
-        
+        |
         <NavLink
-          className={bsDifficultyCols}
           to='/minesweeper/extreme'
+          style={commonStyle}
         >Extreme</NavLink>
+        |
         <NavLink
-          className={bsDifficultyCols}
           to='/minesweeper/custom'
+          style={commonStyle}
         >Custom</NavLink>
 
       </div>
