@@ -47,7 +47,9 @@ const MinesweeperSection = () => (
   <div className="row justify-content-center">
     <div className="col-md-5">
       <p className="common-paragraph p-2 p-md-4">
-        My first own React project was Minesweeper! Check it out <Link to='/minesweeper'>Here</Link>
+        My very first own React project was Minesweeper! After completing the game logic, I also built a leaderboard system with Node for the different difficulties.
+        
+        <br/> <Link to='/minesweeper'>Check it out here </Link>
       </p>
     </div>
 

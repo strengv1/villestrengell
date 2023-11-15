@@ -1,8 +1,13 @@
-import { useState, useEffect  } from 'react'
-import Grid from './components/grid.jsx'
-import Timer from './components/timer.jsx'
-import Header from './components/header.jsx'
-import './styles.css'
+import { useLoaderData, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import scoreService from '../services/scores'
+import Leaderboard from "../components/leaderboard";
+import NewGameButton from "../components/NewGameButton";
+import Timer from "../components/timer";
+import GameOverBox from "../components/GameOverBox";
+import Grid from "../components/grid";
+import CustomFieldSet from "../components/CustomFieldSet"
 
 const getXYfromIndex = (index, width) => {
   const x = index%width
@@ -74,18 +79,22 @@ const generateGrid = (wid, hgt) => {
   }
   return newGrid
 }
+export default function Game() {
+  const { difficulty } = useParams()
+  const [topScores, gridDimensions] = useLoaderData()
 
-function App() {
+  const [customGridDimensions, setCustomGridDimensions] = useState( { width:4, height:4, mineCount:6 } )
   const [firstClick, setFirstClick] = useState(true)
-  const [height, setHeight] = useState(9)
-  const [width, setWidth] = useState(9)
-  const [mineCount, setMineCount] = useState(10)
   const [grid, setGrid] = useState([[]])
   const [gameOverText, setGameOverText] = useState('')
   const [time, setTime] = useState(0)
   const [timerOn, setTimerOn] = useState(0)
-  const [minesLeftText, setMinesLeftText] = useState(mineCount)
+  const [minesLeftText, setMinesLeftText] = useState(gridDimensions.mineCount)
 
+  // eslint-disable-next-line
+  useEffect(() => initializeGrid(), [difficulty])  
+
+  // Handle clock
   useEffect(() => {
     let interval = null
     
@@ -98,8 +107,8 @@ function App() {
     }
 
     return () => clearInterval(interval) // Memory leak preventation?
-  }, [timerOn]);
-  
+  }, [timerOn])
+
   // Game does not continue if:
   // 1. A tile has a mine, and it's unopened
   // 2. A tile does NOT have a mine and it's unopened
@@ -200,52 +209,161 @@ function App() {
     }
     setGrid(newGrid)
   }
-
   const initializeGrid = () => {
     setTimerOn(false)
-    setTime(0) 
+    setTime(0)
     setFirstClick(true)
     setGameOverText('')
-    setMinesLeftText(mineCount)
-    const newGrid = generateGrid(width, height)
-    addMinesToGrid(newGrid, mineCount)
-    addAdjacentMineNumbers(newGrid, width)
+
+    let newGrid;
+    if (difficulty==='custom') {
+      setMinesLeftText(customGridDimensions.mineCount)
+      newGrid = generateGrid(customGridDimensions.width, customGridDimensions.height)
+      addMinesToGrid(newGrid, customGridDimensions.mineCount)
+      addAdjacentMineNumbers(newGrid, customGridDimensions.width)
+    } else {
+      setMinesLeftText(gridDimensions.mineCount)
+      newGrid = generateGrid(gridDimensions.width, gridDimensions.height)
+      addMinesToGrid(newGrid, gridDimensions.mineCount)
+      addAdjacentMineNumbers(newGrid, gridDimensions.width)
+    }
+    
     setGrid(newGrid)
 
     const board = document.querySelector('.board')
     if (board) {
-      board.style.setProperty('--size', width)
+      difficulty==='custom' ? board.style.setProperty('--boardWidth', customGridDimensions.width) : board.style.setProperty('--boardWidth', gridDimensions.width)
     }
   }
   
+  const saveScore = ( event ) => {
+    event.preventDefault()
+
+    const myThen = returnedScore => {
+      alert('Score saved succesfully!')
+    }
+    const myCatch = error => {
+      console.log(error.response ?
+        error.response.data.error :
+        'Unidentified error occured, error:', error, true
+      )
+    }
+    const newScore = {
+      "username": event.target.username.value,
+      "time": time
+    }
+    switch(difficulty){
+      case 'beginner':
+        scoreService
+          .createBeginner(newScore)
+          .then(returnedScore => myThen(returnedScore))
+          .catch(error => myCatch(error))
+        break
+      case 'intermediate':
+        scoreService
+          .createIntermediate(newScore)
+          .then(returnedScore => myThen(returnedScore))
+          .catch(error => myCatch(error))
+        break
+      case 'extreme':
+        scoreService
+          .createExtreme(newScore)
+          .then(returnedScore => myThen(returnedScore))
+          .catch(error => myCatch(error))
+        break
+      default:
+        break
+    }
+
+    setGameOverText('')
+    event.target.username.value = ''
+  }
+
   return (
     <>
-      <Header 
-        width={width} height={height} mineCount={mineCount}
-        functions={[
-            setWidth,
-            setHeight,
-            setMineCount,
-            initializeGrid
-          ]}
-      />     
+      {
+        difficulty === 'custom' ?
+          <CustomFieldSet
+            customGridDimensions={customGridDimensions}
+            setCustomGridDimensions={setCustomGridDimensions}
+          /> :
+          <Leaderboard scores={topScores}/>
+      }
+      
+      <NewGameButton initializeGrid={initializeGrid}/>
+      <Timer time={time} minesLeft={minesLeftText} />
 
-      <div className="body">
-        <Timer time={time} minesLeft={minesLeftText} />
-
-        <div className="gameOverText">
-          {gameOverText}
-        </div>
-        <Grid
-            grid={grid}
-            functions={
-              [ revealTile, 
-                flagTile, 
-                checkFlagsAndRevealAdjacentTiles ]}
-          />
-      </div>
+      <GameOverBox
+        text={gameOverText}
+        time={time}
+        isCustom={difficulty==='custom'}
+        functions={
+          [ initializeGrid,
+          saveScore,
+          setGameOverText ]}
+      />
+      <Grid
+        grid={grid}
+        functions={
+          [ revealTile,
+            flagTile,
+            checkFlagsAndRevealAdjacentTiles ]}
+      />
     </>
-  );
+  )
 }
 
-export default App;
+export const scoreLoader = async ({ params }) => {
+  const { difficulty } = params
+
+  const fastestFirst = (a, b) => a.time - b.time
+  let score = [];
+  let gridDimensions = {
+    width: 2,
+    height: 2,
+    mineCount: 1
+  }
+
+  switch (difficulty) {
+    case 'beginner':
+      score = await scoreService.getBeginner()
+        .then(scores => {
+          scores.sort(fastestFirst)
+          return scores
+        })
+        .catch(error => console.log("error: ", error))
+
+      gridDimensions = { width: 9, height: 9, mineCount: 10 }
+      return [score, gridDimensions]
+
+    case 'intermediate':
+      score = await scoreService.getIntermediate()
+        .then(scores => {
+          scores.sort(fastestFirst)
+          return scores
+        })
+        .catch(error => console.log("error: ", error))
+
+      gridDimensions = { width: 16, height: 16, mineCount: 40 }
+      return [score, gridDimensions]
+  
+    case 'extreme':
+      score = await scoreService.getExtreme()
+        .then(scores => {
+          scores.sort(fastestFirst)
+          return scores
+        })
+        .catch(error => console.log("error: ", error))
+
+      gridDimensions = { width: 30, height: 16, mineCount: 99 }
+      return [score, gridDimensions]
+    case 'custom':
+      score = null
+      gridDimensions = { width: 4, height: 4, mineCount: 5 }
+      return [score, gridDimensions]
+    
+    default:
+      return [score, gridDimensions]
+    
+  }
+}

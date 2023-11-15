@@ -1,21 +1,38 @@
-import { Route, Routes } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from 'react-router-dom'
 import App from './App'
-import Minesweeper from './minesweeper/src/Minesweeper'
+import GameLayout from './minesweeper/src/layouts/GameLayout'
+import Game, { scoreLoader } from './minesweeper/src/pages/Game'
 import CV from './components/CV'
+import AppLayout from './AppLayout'
 
-function Router() {
-  return (
-    <Routes>
-      <Route
-        path="/"
-        element={<App />} />
-      <Route
-        path="/minesweeper"
-        element={<Minesweeper />} />
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={ <AppLayout /> }>
+      <Route index element={<App />} />
       <Route
         path="/cv"
         element={<CV />} />
-    </Routes>
+      <Route
+        path="/minesweeper"
+        element={<GameLayout />}>
+        <Route path=":difficulty"
+          element={<Game />}
+          loader={scoreLoader} />
+      </Route>
+    </Route>
+  )
+)
+
+function Router() {
+  return (
+    <>      
+      <RouterProvider router={router} />
+    </>
   )
 }
 
