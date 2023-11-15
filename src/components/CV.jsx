@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import BackBtn from './BackBtn'
 import './../css/cv.css'
 import CVImage from './../assets/me-CV.jpg'
 import PlaceIcon from '@mui/icons-material/Place';
@@ -14,19 +14,7 @@ const CV = () => {
   return (
     <div className="container cv-container">
       <div className="row cv-container">
-        <Link to='/'
-          style={{
-            position:"fixed",
-            left:"20px",
-            top:"10px",
-            width:"fit-content",
-            fontSize:"1.3em",
-            color:"blue",
-            backgroundColor: "rgba(255,255,255,0.7)"
-          }}>
-          {language === 'FI' && <>Takaisin</>}
-          {language === 'EN' && <>Back</>}
-        </Link>
+        <BackBtn language={language} />
         
         <div className="col-md-4 cv-left">   {/* CV left */}
           <div className="row">

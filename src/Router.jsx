@@ -9,6 +9,7 @@ import GameLayout from './minesweeper/src/layouts/GameLayout'
 import Game, { scoreLoader } from './minesweeper/src/pages/Game'
 import CV from './components/CV'
 import AppLayout from './AppLayout'
+import BackBtn from './components/BackBtn'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,11 @@ const router = createBrowserRouter(
           element={<Game />}
           loader={scoreLoader} />
       </Route>
-      <Route path="*" element={<div style={{margin:"2em auto", textAlign: "center"}}><strong>Not found :/</strong></div>} />
+      <Route path="*" element={
+      <div style={{margin:"2em auto", textAlign: "center"}}>
+        <strong>Not found :/</strong>
+        <BackBtn language="EN"/>
+      </div>} />
     </Route>
   )
 )

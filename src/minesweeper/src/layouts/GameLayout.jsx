@@ -1,4 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import BackBtn from './../../../components/BackBtn'
 import DifficultyBar from "../components/DifficultyBar"
 
 import './../styles.css'
@@ -7,18 +8,7 @@ export default function GameLayout() {
   return(
     <div className="root-layout">   
       <header>
-        <Link to='/'
-            style={{
-              position:"fixed",
-              left:"20px",
-              top:"10px",
-              width:"fit-content",
-              fontSize:"1.3em",
-              color:"blue",
-              backgroundColor: "rgba(255,255,255,0.7)"
-            }}>
-            Back
-          </Link>
+        <BackBtn language="EN" />
         <div className="row mt-5 mb-3 text-center">
           <h1>Miinaharava</h1>
           <h3>Choose the difficulty:</h3>
