@@ -282,8 +282,7 @@ export default function Game() {
   }
   return (
     <>
-      {
-        difficulty === 'custom' ?
+      { difficulty === 'custom' ?
           <CustomFieldSet
             customGridDimensions={customGridDimensions}
             setCustomGridDimensions={setCustomGridDimensions}
@@ -294,10 +293,16 @@ export default function Game() {
             </Await>
           </React.Suspense>
       }
-      
       <NewGameButton initializeGrid={initializeGrid}/>
       <Timer time={time} minesLeft={minesLeftText} />
 
+      <Grid
+        grid={grid}
+        functions={
+          [ revealTile,
+            flagTile,
+            checkFlagsAndRevealAdjacentTiles ]}
+      />
       <GameOverBox
         text={gameOverText}
         time={time}
@@ -306,13 +311,6 @@ export default function Game() {
           [ initializeGrid,
           saveScore,
           setGameOverText ]}
-      />
-      <Grid
-        grid={grid}
-        functions={
-          [ revealTile,
-            flagTile,
-            checkFlagsAndRevealAdjacentTiles ]}
       />
     </>
   )
