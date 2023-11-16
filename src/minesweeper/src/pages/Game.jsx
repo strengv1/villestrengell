@@ -1,5 +1,10 @@
-import { useLoaderData, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { 
+  defer,
+  Await,
+  useLoaderData,
+  useParams
+} from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 import scoreService from '../services/scores'
 import Leaderboard from "../components/leaderboard";
@@ -81,7 +86,7 @@ const generateGrid = (wid, hgt) => {
 }
 export default function Game() {
   const { difficulty } = useParams()
-  const [topScores, gridDimensions] = useLoaderData()
+  const data = useLoaderData()
 
   const [customGridDimensions, setCustomGridDimensions] = useState( { width:4, height:4, mineCount:6 } )
   const [firstClick, setFirstClick] = useState(true)
@@ -89,7 +94,7 @@ export default function Game() {
   const [gameOverText, setGameOverText] = useState('')
   const [time, setTime] = useState(0)
   const [timerOn, setTimerOn] = useState(0)
-  const [minesLeftText, setMinesLeftText] = useState(gridDimensions.mineCount)
+  const [minesLeftText, setMinesLeftText] = useState(data.gridDimensions.mineCount)
 
   // eslint-disable-next-line
   useEffect(() => initializeGrid(), [difficulty])  
@@ -222,24 +227,23 @@ export default function Game() {
       addMinesToGrid(newGrid, customGridDimensions.mineCount)
       addAdjacentMineNumbers(newGrid, customGridDimensions.width)
     } else {
-      setMinesLeftText(gridDimensions.mineCount)
-      newGrid = generateGrid(gridDimensions.width, gridDimensions.height)
-      addMinesToGrid(newGrid, gridDimensions.mineCount)
-      addAdjacentMineNumbers(newGrid, gridDimensions.width)
+      setMinesLeftText(data.gridDimensions.mineCount)
+      newGrid = generateGrid(data.gridDimensions.width, data.gridDimensions.height)
+      addMinesToGrid(newGrid, data.gridDimensions.mineCount)
+      addAdjacentMineNumbers(newGrid, data.gridDimensions.width)
     }
-    
+  
     setGrid(newGrid)
 
     const board = document.querySelector('.board')
     if (board) {
-      difficulty==='custom' ? board.style.setProperty('--boardWidth', customGridDimensions.width) : board.style.setProperty('--boardWidth', gridDimensions.width)
+      difficulty==='custom' ? board.style.setProperty('--boardWidth', customGridDimensions.width) : board.style.setProperty('--boardWidth', data.gridDimensions.width)
     }
   }
-  
   const saveScore = ( event ) => {
     event.preventDefault()
 
-    const myThen = returnedScore => {
+    const myThen = () => {
       alert('Score saved succesfully!')
     }
     const myCatch = error => {
@@ -278,7 +282,6 @@ export default function Game() {
     setGameOverText('')
     event.target.username.value = ''
   }
-
   return (
     <>
       {
@@ -287,7 +290,11 @@ export default function Game() {
             customGridDimensions={customGridDimensions}
             setCustomGridDimensions={setCustomGridDimensions}
           /> :
-          <Leaderboard scores={topScores}/>
+          <React.Suspense fallback={<p style={{textAlign:"center"}}>Loading the leaderboard...</p>}>
+            <Await resolve={data.score} errorElement={<p>Error loading leaderboards!</p>}>
+              {(score) => <Leaderboard scores={score}/>}
+            </Await>
+          </React.Suspense>
       }
       
       <NewGameButton initializeGrid={initializeGrid}/>
@@ -317,7 +324,7 @@ export const scoreLoader = async ({ params }) => {
   const { difficulty } = params
 
   const fastestFirst = (a, b) => a.time - b.time
-  let score = [];
+  let score = null;
   let gridDimensions = {
     width: 2,
     height: 2,
@@ -326,7 +333,7 @@ export const scoreLoader = async ({ params }) => {
 
   switch (difficulty) {
     case 'beginner':
-      score = await scoreService.getBeginner()
+      score = scoreService.getBeginner()
         .then(scores => {
           scores.sort(fastestFirst)
           return scores
@@ -334,10 +341,10 @@ export const scoreLoader = async ({ params }) => {
         .catch(error => console.log("error: ", error))
 
       gridDimensions = { width: 9, height: 9, mineCount: 10 }
-      return [score, gridDimensions]
+      break
 
     case 'intermediate':
-      score = await scoreService.getIntermediate()
+      score = scoreService.getIntermediate() 
         .then(scores => {
           scores.sort(fastestFirst)
           return scores
@@ -345,10 +352,10 @@ export const scoreLoader = async ({ params }) => {
         .catch(error => console.log("error: ", error))
 
       gridDimensions = { width: 16, height: 16, mineCount: 40 }
-      return [score, gridDimensions]
+      break
   
     case 'extreme':
-      score = await scoreService.getExtreme()
+      score = scoreService.getExtreme()
         .then(scores => {
           scores.sort(fastestFirst)
           return scores
@@ -356,14 +363,18 @@ export const scoreLoader = async ({ params }) => {
         .catch(error => console.log("error: ", error))
 
       gridDimensions = { width: 30, height: 16, mineCount: 99 }
-      return [score, gridDimensions]
+      break
+
     case 'custom':
       score = null
       gridDimensions = { width: 4, height: 4, mineCount: 5 }
-      return [score, gridDimensions]
+      break
     
     default:
-      return [score, gridDimensions]
-    
+      break
   }
+  return defer({
+    score: score,
+    gridDimensions: gridDimensions
+  })
 }

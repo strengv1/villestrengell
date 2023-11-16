@@ -25,11 +25,14 @@ const router = createBrowserRouter(
           element={<Game />}
           loader={scoreLoader} />
       </Route>
-      <Route path="*" element={
-      <div style={{margin:"2em auto", textAlign: "center"}}>
-        <strong>Not found :/</strong>
-        <BackBtn language="EN"/>
-      </div>} />
+      <Route path="*"
+        element={
+          <div style={{margin:"2em auto", textAlign: "center"}}>
+            <strong>Not found :/</strong>
+            <BackBtn language="EN"/>
+          </div>
+        } 
+      />
     </Route>
   )
 )
