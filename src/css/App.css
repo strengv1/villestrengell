@@ -54,7 +54,6 @@ html, body {
 .common-paragraph {
   color: white;
   font-size: var(--font-size-small);
-  text-align: justify;
 }
 .common-paragraph a {
   color: var(--color-gold);

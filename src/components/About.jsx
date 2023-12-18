@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { SocialIcon } from 'react-social-icons'
 import cvPicture from './../assets/me.jpg'
 import minesweeperPicture from './../assets/minesweeper.png'
+import projectHubPicture from './../assets/projecthub.jpg'
 
 const SocialIcons = () => (
   <div className="row justify-content-evenly">
@@ -62,6 +63,25 @@ const MinesweeperSection = () => (
   </div>
 )
 
+const ProjectHubSection = () => (
+  <div className="row justify-content-center">
+    <div className="col-md-5">
+      <p className="common-paragraph p-2 p-md-4">
+        ProjectHub was made for the course &quot;Design of WWW Services D&quot;. <br/>
+        It is a platform where users can showcase their programming projects and share their portfolio via a unique link.<br/>
+        To test it out, you can create a mock user with fake information and register.
+        <br/> <Link to='https://projecthub.fly.dev/'>Check it out here </Link>
+      </p>
+    </div>
+
+    <div className="col-9 col-md-6 text-center" >
+      <Link to='https://projecthub.fly.dev/'>
+        <img className="about-picture" loading="lazy" style={{width: "50%"}} src={projectHubPicture} />
+      </Link>
+    </div>
+  </div>
+)
+
 const Line = () => (
   <div className="line"/>
 )
@@ -78,6 +98,7 @@ const About = () => {
       <IntroText />
       <Line />
       <MinesweeperSection />
+      <ProjectHubSection />
     </div>
   )
 }
